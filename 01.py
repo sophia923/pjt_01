@@ -1,4 +1,4 @@
-import requests, json
+import requests, json #jsone type을 dictionary type으로 변경
 import csv
 from datetime import datetime, timedelta
 from decouple import config
@@ -11,7 +11,7 @@ current_date = datetime(2019, 7, 13)
 result = {}
 
 for week in range(50): #range가 하나 빼는 거라서 51로 넣었는데 알고비 50 근데 왜 50을 넣어야함 ? 인덱스가 0부터 시작하니까 그ㅐㄹ서 뭐 ? 레인지에 5를 넣고 0-4까지 나
-    # 자기 자신을 뺐으니까 50이이여도 상관없다 date time 을 뺐으니까 50을 해도 상관이 없다 이건 시행착오 
+    # 자기 자신을 뺐으니까 50이이여도 상관없다 date time 을 뺐으니까 50을 해도 상관이 없다 
     key = config('S_KEY')
     cal_date = current_date - timedelta(weeks=week) 
     targetDt = cal_date.strftime('%Y%m%d')
@@ -36,7 +36,7 @@ for week in range(50): #range가 하나 빼는 거라서 51로 넣었는데 알�
                     'movieNm' : movie.get('movieNm'),
                     'audiAcc' : movie.get('audiAcc')
                 }
-    # pprint(result)
+    pprint(result)
 
 with open('boxoffice.csv', 'w', encoding='utf-8', newline='') as f:
     fieldnames = ('movieCd', 'movieNm', 'audiAcc')
@@ -45,42 +45,6 @@ with open('boxoffice.csv', 'w', encoding='utf-8', newline='') as f:
     for value in result.values():
         print(value)
         writer.writerow(value)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -26,7 +26,7 @@ for code_new in result:
     
     url = f'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key={key}&movieCd={code_new}'
     api_data = requests.get(url).json()
-
+# 영화 상세 요청 보내기 
     movies = api_data.get('movieInfoResult').get('movieInfo')
     # for movie in movies: # 굳이 이건 넣을 필요가 없음 어차피 자료 1에서 자료를 불러오는 값들이라서. 
     #     code_new = movie.get('movieCd')
